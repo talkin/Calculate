@@ -1,27 +1,46 @@
 package com.company;
 
-public abstract class Calculate {
-    protected static Float result;
+public class Calculate {
+    public static final float DISCOUNT = 0.5f;
+    protected float result;
+    private Currency inputCurrency;
+    private float taxRate;
 
-    public Float add(Float numberOne, Float numberTwo) {
-        result = numberOne + numberTwo;
-        return result * getRatio();
+    public Calculate add(Float numberOne, Float numberTwo) {
+        result = (numberOne + numberTwo);
+        return this;
     }
 
-    public Float sub(Float numberOne, Float numberTwo) {
-        result = numberOne - numberTwo;
-        return result * getRatio();
+    public Calculate sub(Float numberOne, Float numberTwo) {
+        result = (numberOne - numberTwo);
+        return this;
     }
 
-    public Float mul(Float numberOne, Float numberTwo) {
+    public Calculate mul(Float numberOne, Float numberTwo) {
         result = numberOne * numberTwo;
-        return result * getRatio();
+        return this;
     }
 
-    public Float div(Float numberOne, Float numberTwo) {
-        result = numberOne/numberTwo;
-        return result * getRatio();
+    public Calculate div(Float numberOne, Float numberTwo) {
+        result = numberOne / numberTwo;
+        return this;
     }
 
-    protected  abstract float getRatio();
+    public float getResult(Currency outCurrency) {
+        float resultWithoutDeduction = result * inputCurrency.getRatio() / outCurrency.getRatio();
+
+        return inputCurrency.equals(outCurrency) ? resultWithoutDeduction : resultWithoutDeduction * resultWithDeduction(outCurrency);
+    }
+
+    private float resultWithDeduction(Currency outCurrency) {
+        if (result * inputCurrency.getRatio() >= 1000f) {
+            return (1 - inputCurrency.getFee() * DISCOUNT) * (1 - outCurrency.getFee() * DISCOUNT);
+        }
+        return (1 - inputCurrency.getFee()) * (1 - outCurrency.getFee());
+    }
+
+    public void withInputRatio(Currency currency) {
+        inputCurrency = currency;
+    }
+
 }

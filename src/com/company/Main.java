@@ -2,19 +2,20 @@ package com.company;
 
 import java.util.Scanner;
 
+import static com.company.Currency.parse;
+
 public class Main {
 
     public static void main(String[] args) {
 
         Scanner scanner = new Scanner(System.in);
-        Calculate calculate = null;
-        Float numberResult = null;
+        Calculate calculate = new Calculate();
+        Float numberResult;
 
         while (true) {
 
-            System.out.println("please input the calculate(1 2 3):");
-            String chooseCalculate = scanner.nextLine();
-            int choose = Integer.valueOf(chooseCalculate);
+            System.out.println("please input the kind of money(CNY USD INR):");
+            String inputChoose = scanner.nextLine();
 
             System.out.println("please input the first number:");
             String numberOne = scanner.nextLine();
@@ -27,24 +28,22 @@ public class Main {
             String numberTwo = scanner.nextLine();
             Float two = Float.valueOf(numberTwo);
 
+            System.out.println("please output the kind of money(CNY USD INR):");
+            String outputChoose = scanner.nextLine();
 
-            if (choose == 1) {
-                calculate = new Calculate1();
-            } else if (choose == 2) {
-                calculate = new Calculate2();
-            } else if (choose == 3){
-                calculate = new Calculate3();
-            }
+            calculate.withInputRatio(parse(inputChoose));
 
             if (operator.equals("+")) {
-                numberResult = calculate.add(one, two);
+                calculate.add(one, two);
             } else if (operator.equals("-")) {
-                numberResult = calculate.sub(one, two);
+                calculate.sub(one, two);
             } else if (operator.equals("*")) {
-                numberResult = calculate.mul(one, two);
+                calculate.mul(one, two);
             } else if (operator.equals("/")) {
-                numberResult = calculate.div(one, two);
+                calculate.div(one, two);
             }
+
+            numberResult = calculate.getResult(parse(outputChoose));
 
             String result = String.valueOf(numberResult);
             System.out.println("the result is: \n" + result + "\n");
