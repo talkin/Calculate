@@ -28,33 +28,28 @@ public class YenTest {
     //---------test add----------
     @Test
     public void should_60_Yen_add_60_Yen_equals_120_Yen() throws Exception {
-        Yen result = yen.add(yen);
-        assertThat(result.getValue(), is(120.0));
+        assertThat(yen.add(yen).getValue(), is(120.0));
     }
 
     @Test
     public void should_60_Yen_add_1_dollar_equals_120_Yen() throws Exception {
-        Yen result = yen.add(dollar);
-        assertThat(result.getValue(), is(120.0));
+        assertThat(yen.add(dollar).getValue(), is(120.0));
     }
 
     @Test
     public void should_60_Yen_add_10_RMB_equals_120_Yen() throws Exception {
-        Yen result = yen.add(rmb);
-        assertThat(result.getValue(), is(120.0));
+        assertThat(yen.add(rmb).getValue(), is(120.0));
     }
 
     //---------test minus----------
     @Test
     public void should_120_yen_minus_60_yen_equals_60_yen() throws Exception {
-        Yen result = yen2.minus(yen);
-        assertThat(result.getValue(), is(60.0));
+        assertThat(yen2.minus(yen).getValue(), is(60.0));
     }
 
     @Test
     public void should_120_yen_minus_1_dollar_equals_1_dollar() throws Exception {
-        Dollar result = yen2.minus(dollar);
-        assertThat(result.getValue(), is(1.0));
+        assertThat(yen2.minus(dollar).getValue(), is(1.0));
     }
 
     @Test
@@ -63,26 +58,39 @@ public class YenTest {
         assertThat(result.getValue(), is(6.0));
     }
 
+    @Test
+    public void should_60_yen_minus_60_yen_equals_0() throws Exception {
+        assertThat(yen.minus(yen).getValue(), is(0.0));
+    }
+
+    @Test(expected = Exception.class)
+    public void should_60_yen_minus_120_yen_throw_exception() throws Exception {
+        yen.minus(yen2);
+    }
+
     //---------test sub list----------
     @Test
     public void should_240_yen_minus_currency_list1_equals_1_dollar() throws Exception {
         Yen yen = new Yen(240.0);
-        Dollar result = yen.sub(getCurrenciesOne(), new Dollar(0.0));
-        assertThat(result.getValue(), is(1.0));
+        assertThat(yen.sub(getCurrenciesOne(), new Dollar(0.0)).getValue(), is(1.0));
     }
 
     @Test
     public void should_240_yen_minus_currency_list1_equals_6_dollar() throws Exception {
         Yen yen = new Yen(240.0);
-        RMB result = yen.sub(getCurrenciesOne(), new RMB(0.0));
-        assertThat(result.getValue(), is(6.0));
+        assertThat(yen.sub(getCurrenciesOne(), new RMB(0.0)).getValue(), is(6.0));
     }
 
     @Test
     public void should_240_yen_minus_currency_list1_equals_60_yen() throws Exception {
         Yen yen = new Yen(240.0);
-        Yen result = yen.sub(getCurrenciesOne(), new Yen(0.0));
-        assertThat(result.getValue(), is(60.0));
+        assertThat(yen.sub(getCurrenciesOne(), new Yen(0.0)).getValue(), is(60.0));
+    }
+
+    @Test(expected = Exception.class)
+    public void should_120_rmb_minus_currency_list1_throw_exception() throws Exception {
+        Yen yen = new Yen(120.0);
+        yen.sub(getCurrenciesOne(), new Yen(0.0));
     }
 
 }

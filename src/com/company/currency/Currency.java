@@ -14,19 +14,24 @@ public abstract class Currency<T extends Currency> {
         return newCurrency(getValue() + currency.getValue() * (currency.getRadio()/getRadio()));
     }
 
-    public <R extends Currency> R minus(R currency) {
-        return (R)currency.newCurrency(getValue() * getRadio()/currency.getRadio()  - currency.getValue());
+    public <R extends Currency> R minus(R currency) throws Exception {
+        double value = getValue() * getRadio() / currency.getRadio() - currency.getValue();
+        if (value >= 0) {
+            return (R)currency.newCurrency(value);
+        } else {
+            throw new Exception("error");
+        }
     }
 
-    public static <R extends Currency> R getSum(List<Currency> currencyList, R currency) {
+    public static <R extends Currency> R getSum(List<Currency> currencyList, R currency) throws Exception {
         Yen yen = new Yen(0.0);
         for (Currency currency1 : currencyList) {
             yen = yen.add(currency1);
         }
         return yen.minus(currency);
-    };
+    }
 
-    public <R extends Currency> R sub(List<Currency> currencyList, R currency) {
+    public <R extends Currency> R sub(List<Currency> currencyList, R currency) throws Exception {
         R sum = getSum(currencyList, currency);
         return this.minus(sum);
     };
