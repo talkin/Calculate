@@ -67,29 +67,4 @@ public class DollarTest {
         dollar.minus(dollar2);
     }
 
-    //---------test sub list----------
-    @Test
-    public void should_4_dollar_minus_currency_list1_equals_1_dollar() throws Exception {
-        Dollar dollar = new Dollar(4.0);
-        assertThat(dollar.sub(getCurrenciesOne(), new Dollar(0.0)).getValue(), is(1.0));
-    }
-
-    @Test
-    public void should_4_dollar_minus_currency_list1_equals_6_rmb() throws Exception {
-        Dollar dollar = new Dollar(4.0);
-        assertThat(dollar.sub(getCurrenciesOne(), new RMB(0.0)).getValue(), is(6.0));
-    }
-
-    @Test
-    public void should_4_dollar_sub_currency_list1_equals_60_yen() throws Exception {
-        Dollar dollar = new Dollar(4.0);
-        assertThat(dollar.sub(getCurrenciesOne(), new Yen(0.0)).getValue(), is(60.0));
-    }
-
-    @Test(expected = Exception.class)
-    public void should_2_dollar_minus_currency_list1_throw_exception() throws Exception {
-        Dollar dollar = new Dollar(2.0);
-        dollar.sub(getCurrenciesOne(), new Dollar(0.0));
-    }
-
 }

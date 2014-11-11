@@ -5,6 +5,8 @@ public class Dollar extends Currency<Dollar>{
     private double value;
     private double radio=60;
 
+    public Dollar() {}
+
     public Dollar(double value) {
         this.value = value;
     }
@@ -12,6 +14,11 @@ public class Dollar extends Currency<Dollar>{
     @Override
     public double getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(double value) {
+        this.value = value;
     }
 
     @Override

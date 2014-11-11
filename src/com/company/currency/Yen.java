@@ -4,6 +4,8 @@ public class Yen extends Currency<Yen> {
     private double value;
     private double radio=1;
 
+    public Yen() {}
+
     public Yen(double value) {
         this.value = value;
     }
@@ -11,6 +13,11 @@ public class Yen extends Currency<Yen> {
     @Override
     public double getValue() {
         return value;
+    }
+
+    @Override
+    public void setValue(double value) {
+        this.value = value;
     }
 
     @Override

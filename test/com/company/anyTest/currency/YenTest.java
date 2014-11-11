@@ -68,29 +68,4 @@ public class YenTest {
         yen.minus(yen2);
     }
 
-    //---------test sub list----------
-    @Test
-    public void should_240_yen_minus_currency_list1_equals_1_dollar() throws Exception {
-        Yen yen = new Yen(240.0);
-        assertThat(yen.sub(getCurrenciesOne(), new Dollar(0.0)).getValue(), is(1.0));
-    }
-
-    @Test
-    public void should_240_yen_minus_currency_list1_equals_6_dollar() throws Exception {
-        Yen yen = new Yen(240.0);
-        assertThat(yen.sub(getCurrenciesOne(), new RMB(0.0)).getValue(), is(6.0));
-    }
-
-    @Test
-    public void should_240_yen_minus_currency_list1_equals_60_yen() throws Exception {
-        Yen yen = new Yen(240.0);
-        assertThat(yen.sub(getCurrenciesOne(), new Yen(0.0)).getValue(), is(60.0));
-    }
-
-    @Test(expected = Exception.class)
-    public void should_120_rmb_minus_currency_list1_throw_exception() throws Exception {
-        Yen yen = new Yen(120.0);
-        yen.sub(getCurrenciesOne(), new Yen(0.0));
-    }
-
 }

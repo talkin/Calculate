@@ -68,28 +68,4 @@ public class RMBTest {
         rmb.minus(rmb2);
     }
 
-    //---------test sub list----------
-    @Test
-    public void should_24_rmb_minus_currency_list1_equals_1_dollar() throws Exception {
-        RMB rmb = new RMB(24.0);
-        assertThat(rmb.sub(getCurrenciesOne(), new Dollar(0.0)).getValue(), is(1.0));
-    }
-
-    @Test
-    public void should_24_rmb_minus_currency_list1_equals_6_rmb() throws Exception {
-        RMB rmb = new RMB(24.0);
-        assertThat(rmb.sub(getCurrenciesOne(), new RMB(0.0)).getValue(), is(6.0));
-    }
-
-    @Test
-    public void should_24_rmb_minus_currency_list1_equals_60_yen() throws Exception {
-        RMB rmb = new RMB(24.0);
-        assertThat(rmb.sub(getCurrenciesOne(), new Yen(0.0)).getValue(), is(60.0));
-    }
-
-    @Test(expected = Exception.class)
-    public void should_12_rmb_minus_currency_list1_throw_exception() throws Exception {
-        RMB rmb = new RMB(12.0);
-        rmb.sub(getCurrenciesOne(), new RMB(0.0));
-    }
 }

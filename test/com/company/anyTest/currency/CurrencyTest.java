@@ -15,7 +15,7 @@ public class CurrencyTest {
 
     private ArrayList<Currency> getCurrenciesOne() {
         ArrayList<Currency> currencies = new ArrayList<Currency>();
-        currencies.add(new Dollar(1.0));
+        currencies.add(new Dollar(2.0));
         currencies.add(new RMB(6.0));
         currencies.add(new Yen(60.0));
         return currencies;
@@ -24,8 +24,8 @@ public class CurrencyTest {
     private ArrayList<Currency> getCurrenciesTwo() {
         ArrayList<Currency> currencies = new ArrayList<Currency>();
         currencies.add(new Dollar(1.0));
-        currencies.add(new RMB(1.0));
-        currencies.add(new Yen(10.0));
+        currencies.add(new RMB(6.0));
+        currencies.add(new Yen(60.0));
         return currencies;
     }
 
@@ -39,20 +39,18 @@ public class CurrencyTest {
 
     @Test
     public void should_get_the_sum_of_currency_list1() throws Exception {
-
-        assertThat(Currency.getSum(getCurrenciesOne(), new Dollar(0.0)).getValue(), is(3.0));
+        assertThat(Currency.getSum(getCurrenciesOne(), getCurrenciesTwo(), Dollar.class).getValue(), is(1.0));
     }
 
     @Test
     public void should_get_the_sum_of_currency_list2() throws Exception {
-
-        assertThat(Currency.getSum(getCurrenciesTwo(), new RMB(0.0)).getValue(), is(8.0));
+        assertThat(Currency.getSum(getCurrenciesOne(), getCurrenciesTwo(), RMB.class).getValue(), is(6.0));
     }
 
     @Test
     public void should_get_the_sum_of_currency_list3() throws Exception {
 
-        assertThat(Currency.getSum(getCurrenciesThree(), new Yen(0.0)).getValue(), is(234.0));
+        assertThat(Currency.getSum(getCurrenciesOne(), getCurrenciesTwo(), Yen.class).getValue(), is(60.0));
     }
 
 }
