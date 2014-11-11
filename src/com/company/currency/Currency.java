@@ -4,11 +4,20 @@ import java.util.List;
 
 public abstract class Currency<T extends Currency> {
 
-    public abstract double getValue();
+    protected double value;
+    protected double radio;
 
-    public abstract void setValue(double value);
+    public double getValue() {
+        return value;
+    }
 
-    public abstract double getRadio();
+    public void setValue(double value) {
+        this.value = value;
+    }
+
+    public double getRadio() {
+        return radio;
+    }
 
     protected abstract T newCurrency(double value);
 

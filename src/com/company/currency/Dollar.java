@@ -2,28 +2,13 @@ package com.company.currency;
 
 public class Dollar extends Currency<Dollar>{
 
-    private double value;
-    private double radio=60;
-
-    public Dollar() {}
+    public Dollar() {
+        this.radio = 60;
+    }
 
     public Dollar(double value) {
+        this();
         this.value = value;
-    }
-
-    @Override
-    public double getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(double value) {
-        this.value = value;
-    }
-
-    @Override
-    public double getRadio() {
-        return radio;
     }
 
     @Override

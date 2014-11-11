@@ -2,27 +2,12 @@ package com.company.currency;
 
 public class RMB extends Currency<RMB>{
 
-    private double value;
-    private double radio = 10;
-
-    public RMB() {}
+    public RMB() {
+        this.radio = 10;
+    }
     public RMB(double value) {
+        this();
         this.value = value;
-    }
-
-    @Override
-    public double getValue() {
-        return value;
-    }
-
-    @Override
-    public void setValue(double value) {
-        this.value = value;
-    }
-
-    @Override
-    public double getRadio() {
-        return radio;
     }
 
     @Override
