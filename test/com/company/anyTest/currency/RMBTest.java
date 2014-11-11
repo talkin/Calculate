@@ -1,12 +1,9 @@
 package com.company.anyTest.currency;
 
-import com.company.currency.Currency;
 import com.company.currency.Dollar;
 import com.company.currency.RMB;
 import com.company.currency.Yen;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -18,49 +15,48 @@ public class RMBTest {
     RMB rmb2 = new RMB(12.0);
     Yen yen = new Yen(60.0);
 
-    private ArrayList<Currency> getCurrenciesOne() {
-        ArrayList<Currency> currencies = new ArrayList<Currency>();
-        currencies.add(new Dollar(1.0));
-        currencies.add(new RMB(6.0));
-        currencies.add(new Yen(60.0));
-        return currencies;
-    }
-
     //---------test add----------
     @Test
     public void should_6_RMB_add_6_RMB_equals_12_RMB() throws Exception {
-        assertThat(rmb.add(rmb).getValue(), is(12.0));
+        RMB result = rmb.add(rmb);
+        assertThat(result.getValue(), is(12.0));
     }
 
     @Test
     public void should_6_RMB_add_1_dollar_equals_12_RMB() throws Exception {
-        assertThat(rmb.add(dollar).getValue(), is(12.0));
+        RMB result = rmb.add(dollar);
+        assertThat(result.getValue(), is(12.0));
     }
 
     @Test
     public void should_6_RMB_add_60_Yen_equals_12_RMB() throws Exception {
-        assertThat(rmb.add(yen).getValue(), is(12.0));
+        RMB result = rmb.add(yen);
+        assertThat(result.getValue(), is(12.0));
     }
 
     //---------test minus----------
     @Test
     public void should_12_rmb_minus_60_yen_equals_60_yen() throws Exception {
-        assertThat(rmb2.minus(yen).getValue(), is(60.0));
+        Yen result = rmb2.minus(yen);
+        assertThat(result.getValue(), is(60.0));
     }
 
     @Test
     public void should_12_rmb_minus_1_dollar_equals_1_dollar() throws Exception {
-        assertThat(rmb2.minus(dollar).getValue(), is(1.0));
+        Dollar result = rmb2.minus(dollar);
+        assertThat(result.getValue(), is(1.0));
     }
 
     @Test
     public void should_12_rmb_minus_6_rmb_equals_6_rmb() throws Exception {
-        assertThat(rmb2.minus(rmb).getValue(), is(6.0));
+        RMB result = rmb2.minus(rmb);
+        assertThat(result.getValue(), is(6.0));
     }
 
     @Test
     public void should_6_rmb_minus_6_rmb_equals_0() throws Exception {
-        assertThat(rmb.minus(rmb).getValue(), is(0.0));
+        RMB result = rmb.minus(rmb);
+        assertThat(result.getValue(), is(0.0));
     }
 
     @Test(expected = Exception.class)

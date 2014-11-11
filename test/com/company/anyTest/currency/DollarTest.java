@@ -1,12 +1,9 @@
 package com.company.anyTest.currency;
 
-import com.company.currency.Currency;
 import com.company.currency.Dollar;
 import com.company.currency.RMB;
 import com.company.currency.Yen;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
@@ -17,49 +14,48 @@ public class DollarTest {
     RMB rmb = new RMB(6.0);
     Yen yen = new Yen(60.0);
 
-    private ArrayList<Currency> getCurrenciesOne() {
-        ArrayList<Currency> currencies = new ArrayList<Currency>();
-        currencies.add(new Dollar(1.0));
-        currencies.add(new RMB(6.0));
-        currencies.add(new Yen(60.0));
-        return currencies;
-    }
-
     //---------test add----------
     @Test
     public void should_1_dollar_add_1_dollar_equals_2_dollar() throws Exception {
-        assertThat(dollar.add(dollar).getValue(), is(2.0));
+        Dollar result = dollar.add(dollar);
+        assertThat(result.getValue(), is(2.0));
     }
 
     @Test
     public void should_1_dollar_add_6_RMB_equals_2_dollars() throws Exception {
-        assertThat(dollar.add(rmb).getValue(), is(2.0));
+        Dollar result = dollar.add(rmb);
+        assertThat(result.getValue(), is(2.0));
     }
 
     @Test
     public void should_1_dollar_add_60_Yen_equals_2_dollars() throws Exception {
-        assertThat(dollar.add(yen).getValue(), is(2.0));
+        Dollar result = dollar.add(yen);
+        assertThat(result.getValue(), is(2.0));
     }
 
     //---------test minus----------
     @Test
     public void should_2_dollar_minus_1_dollar_equals_1_dollar() throws Exception {
-        assertThat(dollar2.minus(dollar).getValue(), is(1.0));
+        Dollar result = dollar2.minus(dollar);
+        assertThat(result.getValue(), is(1.0));
     }
 
     @Test
     public void should_2_dollar_minus_6_RMB_equals_6_RMB() throws Exception {
-        assertThat(dollar2.minus(rmb).getValue(), is(6.0));
+        RMB result = dollar2.minus(rmb);
+        assertThat(result.getValue(), is(6.0));
     }
 
     @Test
     public void should_2_dollar_minus_60_Yen_equals_60_Yen() throws Exception {
-        assertThat(dollar2.minus(yen).getValue(), is(60.0));
+        Yen result = dollar2.minus(yen);
+        assertThat(result.getValue(), is(60.0));
     }
 
     @Test
     public void should_1_dollar_minus_1_dollar_equals_0() throws Exception {
-        assertThat(dollar.minus(dollar).getValue(), is(0.0));
+        Dollar result = dollar.minus(dollar);
+        assertThat(result.getValue(), is(0.0));
     }
 
     @Test(expected = Exception.class)

@@ -25,19 +25,19 @@ public abstract class Currency<T extends Currency> {
         }
     }
 
-    public static <R extends Currency> R getSum(List<Currency> List1, List<Currency> List2, Class<R> currencyClass) throws Exception {
-        R r1 = currencyClass.newInstance();
-        R r2 = currencyClass.newInstance();
-        for (Currency currency:List1) {
-            r1 = (R)r1.add(currency);
-        }
-        for (Currency currency:List2) {
-            r2 = (R)r2.add(currency);
-        }
-
+    public static <R extends Currency> R caculate(List<Currency> List1, List<Currency> List2, Class<R> currencyClass) throws Exception {
+        R r1 = getSum(List1, currencyClass);
+        R r2 = getSum(List2, currencyClass);
         r1.setValue(r1.getValue()-r2.getValue());
-
         return r1;
+    }
+
+    private static <R extends Currency> R getSum(List<Currency> List, Class<R> currencyClass) throws InstantiationException, IllegalAccessException {
+        R r = currencyClass.newInstance();
+        for (Currency currency:List) {
+            r = (R)r.add(currency);
+        }
+        return r;
     }
 
 
