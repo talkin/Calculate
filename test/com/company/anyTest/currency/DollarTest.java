@@ -18,18 +18,21 @@ public class DollarTest {
     @Test
     public void should_1_dollar_add_1_dollar_equals_2_dollar() throws Exception {
         Dollar result = dollar.add(dollar);
+        assertThat(result.getClass().toString(), is(Dollar.class.toString()));
         assertThat(result.getValue(), is(2.0));
     }
 
     @Test
     public void should_1_dollar_add_6_RMB_equals_2_dollars() throws Exception {
         Dollar result = dollar.add(rmb);
+        assertThat(result.getClass().toString(), is(Dollar.class.toString()));
         assertThat(result.getValue(), is(2.0));
     }
 
     @Test
     public void should_1_dollar_add_60_Yen_equals_2_dollars() throws Exception {
         Dollar result = dollar.add(yen);
+        assertThat(result.getClass().toString(), is(Dollar.class.toString()));
         assertThat(result.getValue(), is(2.0));
     }
 
@@ -37,24 +40,28 @@ public class DollarTest {
     @Test
     public void should_2_dollar_minus_1_dollar_equals_1_dollar() throws Exception {
         Dollar result = dollar2.minus(dollar);
+        assertThat(result.getClass().toString(), is(Dollar.class.toString()));
         assertThat(result.getValue(), is(1.0));
     }
 
     @Test
     public void should_2_dollar_minus_6_RMB_equals_6_RMB() throws Exception {
         RMB result = dollar2.minus(rmb);
+        assertThat(result.getClass().toString(), is(RMB.class.toString()));
         assertThat(result.getValue(), is(6.0));
     }
 
     @Test
     public void should_2_dollar_minus_60_Yen_equals_60_Yen() throws Exception {
         Yen result = dollar2.minus(yen);
+        assertThat(result.getClass().toString(), is(Yen.class.toString()));
         assertThat(result.getValue(), is(60.0));
     }
 
     @Test
     public void should_1_dollar_minus_1_dollar_equals_0() throws Exception {
         Dollar result = dollar.minus(dollar);
+        assertThat(result.getClass().toString(), is(Dollar.class.toString()));
         assertThat(result.getValue(), is(0.0));
     }
 
