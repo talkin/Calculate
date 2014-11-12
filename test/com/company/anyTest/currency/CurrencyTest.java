@@ -50,4 +50,19 @@ public class CurrencyTest {
         assertThat(result.getValue(), is(60.0));
     }
 
+    @Test
+    public void should_compare_1_dollar_and_6_rmb() throws Exception {
+        assertThat(Currency.compare(new Dollar(1.0), new RMB(6.0)), is(0));
+    }
+
+    @Test
+    public void should_compare_1_dollar_and_5_rmb() throws Exception {
+        assertThat(Currency.compare(new Dollar(1.0), new RMB(5.0)), is(1));
+    }
+
+    @Test
+    public void should_compare_1_dollar_to_7_rmb() throws Exception {
+        assertThat(Currency.compare(new Dollar(1.0), new RMB(7.0)), is(-1));
+    }
+
 }
