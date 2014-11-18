@@ -1,9 +1,6 @@
 package com.company.anyTest.currency;
 
-import com.company.currency.Currency;
-import com.company.currency.Dollar;
-import com.company.currency.RMB;
-import com.company.currency.Yen;
+import com.company.currency.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -27,22 +24,6 @@ public class CurrencyTest {
         currencies.add(new Dollar(1.0));
         currencies.add(new RMB(6.0));
         currencies.add(new Yen(60.0));
-        return currencies;
-    }
-
-    private List<Currency> getCurrenciesThree() {
-        ArrayList<Currency> currencies = new ArrayList<Currency>();
-        currencies.add(new Dollar(2.0));
-        currencies.add(new RMB(6.0));
-        currencies.add(new Yen(50.0));
-        return currencies;
-    }
-
-    private List<Currency> getCurrenciesFour() {
-        ArrayList<Currency> currencies = new ArrayList<Currency>();
-        currencies.add(new Yen(50.0));
-        currencies.add(new RMB(6.0));
-        currencies.add(new Dollar(2.0));
         return currencies;
     }
 
