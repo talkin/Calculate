@@ -7,25 +7,42 @@ import com.company.currency.Yen;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class CurrencyTest {
 
-    private ArrayList<Currency> getCurrenciesOne() {
-        ArrayList<Currency> currencies = new ArrayList<Currency>();
+    private List<Currency> getCurrenciesOne() {
+        List<Currency> currencies = new ArrayList<Currency>();
         currencies.add(new Dollar(2.0));
         currencies.add(new RMB(6.0));
         currencies.add(new Yen(60.0));
         return currencies;
     }
 
-    private ArrayList<Currency> getCurrenciesTwo() {
+    private List<Currency> getCurrenciesTwo() {
         ArrayList<Currency> currencies = new ArrayList<Currency>();
         currencies.add(new Dollar(1.0));
         currencies.add(new RMB(6.0));
         currencies.add(new Yen(60.0));
+        return currencies;
+    }
+
+    private List<Currency> getCurrenciesThree() {
+        ArrayList<Currency> currencies = new ArrayList<Currency>();
+        currencies.add(new Dollar(2.0));
+        currencies.add(new RMB(6.0));
+        currencies.add(new Yen(50.0));
+        return currencies;
+    }
+
+    private List<Currency> getCurrenciesFour() {
+        ArrayList<Currency> currencies = new ArrayList<Currency>();
+        currencies.add(new Yen(50.0));
+        currencies.add(new RMB(6.0));
+        currencies.add(new Dollar(2.0));
         return currencies;
     }
 
@@ -52,17 +69,23 @@ public class CurrencyTest {
 
     @Test
     public void should_compare_1_dollar_and_6_rmb() throws Exception {
-        assertThat(Currency.compare(new Dollar(1.0), new RMB(6.0)), is(0));
+        Dollar dollar = new Dollar(1.0);
+        RMB rmb = new RMB(6.0);
+        assertThat(dollar.compare(rmb), is(0));
     }
 
     @Test
     public void should_compare_1_dollar_and_5_rmb() throws Exception {
-        assertThat(Currency.compare(new Dollar(1.0), new RMB(5.0)), is(1));
+        Dollar dollar = new Dollar(1.0);
+        RMB rmb = new RMB(5.0);
+        assertThat(dollar.compare(rmb), is(1));
     }
 
     @Test
     public void should_compare_1_dollar_to_7_rmb() throws Exception {
-        assertThat(Currency.compare(new Dollar(1.0), new RMB(7.0)), is(-1));
+        Dollar dollar = new Dollar(1.0);
+        RMB rmb = new RMB(7.0);
+        assertThat(dollar.compare(rmb), is(-1));
     }
 
 }

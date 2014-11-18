@@ -50,8 +50,8 @@ public abstract class Currency<T extends Currency> {
     }
 
 
-    public static <R1 extends Currency, R2 extends Currency> int compare(R1 r1, R2 r2) {
-        double result = r1.getValue() - r2.getValue() * r2.getRadio() / r1.getRadio();
+    public <R extends Currency> int compare(R r) {
+        double result = getValue() - r.getValue() * r.getRadio() / getRadio();
         if (result == 0) {
             return 0;
         } else if (result > 0) {
