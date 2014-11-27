@@ -8,7 +8,7 @@ public class PromotionDiscount extends Promotion {
     }
 
     @Override
-    public double changePrice(Product product) {
-        return product.getNewPrice() * discount;
+    public double changePrice(Item item) {
+        return item.getPrice() * discount;
     }
 }

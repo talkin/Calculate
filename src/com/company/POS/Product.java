@@ -1,48 +1,29 @@
 package com.company.POS;
 
+//商品类
 public class Product {
-    private Item item;
-    private double newPrice;
-    private int num;
+    private String name;
+    private double price;
 
-    public Product(Item item, int num) {
-        this.item = item;
-        this.newPrice = item.getPrice();
-        this.num = num;
+    public Product(String name, double price) {
+        this.name = name;
+        this.price = price;
     }
 
-    public Item getItem() {
-        return item;
+    public String getName() {
+        return name;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    public double getNewPrice() {
-        return newPrice;
+    public double getPrice() {
+        return price;
     }
 
-    public void setNewPrice(double newPrice) {
-        this.newPrice = newPrice;
-    }
-
-    public int getNum() {
-        return num;
-    }
-
-    public void setNum(int num) {
-        this.num = num;
-    }
-
-    public double doSum() {
-        return newPrice * num;
-    }
-
-    public Product with(Promotion promotion) {
-        double v = promotion.changePrice(this);
-        this.setNewPrice(v);
-        return this;
+    public void setPrice(double price) {
+        this.price = price;
     }
 
 }

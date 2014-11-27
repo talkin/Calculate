@@ -1,20 +1,23 @@
 package com.company.POS;
 
+//购物车中的Items
 public class Item {
-    private String name;
+    private Product product;
     private double price;
+    private int num;
 
-    public Item(String name, double price) {
-        this.name = name;
-        this.price = price;
+    public Item(Product product, int num) {
+        this.product = product;
+        this.price = product.getPrice();
+        this.num = num;
     }
 
-    public String getName() {
-        return name;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 
     public double getPrice() {
@@ -23,6 +26,24 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    public double doSum() {
+        return price * num;
+    }
+
+    public Item with(Promotion promotion) {
+        double v = promotion.changePrice(this);
+        this.setPrice(v);
+        return this;
     }
 
 }
