@@ -12,11 +12,8 @@ public class run {
         PromotionDiscount discount = new PromotionDiscount(0.7);
         PromotionSecondHalf secondHalf = new PromotionSecondHalf();
 
-        double bookNewPrice = itemBook.with(discount).with(secondHalf).getPrice();
-        itemBook.setPrice(bookNewPrice);
-
-        System.out.println("book的单价 ：" + itemBook.getPrice());
-        System.out.println("book的总价 ：" + itemBook.doSum());
+        double totalPrice = itemBook.with(discount).with(secondHalf).doSum();
+        System.out.println("book的总价 ：" + totalPrice);
 
         List<Item> shoppingCart = new ArrayList<Item>();
         shoppingCart.add(itemBook);

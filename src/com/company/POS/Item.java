@@ -41,8 +41,7 @@ public class Item {
     }
 
     public Item with(Promotion promotion) {
-        double v = promotion.changePrice(this);
-        this.setPrice(v);
+        this.setPrice(promotion.changePrice(this));
         return this;
     }
 
