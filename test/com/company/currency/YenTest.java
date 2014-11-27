@@ -1,4 +1,4 @@
-package com.company.anyTest.currency;
+package com.company.currency;
 
 import com.company.currency.Dollar;
 import com.company.currency.RMB;

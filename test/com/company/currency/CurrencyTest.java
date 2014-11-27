@@ -1,4 +1,4 @@
-package com.company.anyTest.currency;
+package com.company.currency;
 
 import com.company.currency.*;
 import org.junit.Test;

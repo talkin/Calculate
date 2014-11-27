@@ -1,8 +1,5 @@
-package com.company.anyTest.currency;
+package com.company.currency;
 
-import com.company.currency.Dollar;
-import com.company.currency.RMB;
-import com.company.currency.Yen;
 import org.junit.Test;
 
 import static org.hamcrest.core.Is.is;
