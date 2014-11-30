@@ -16,6 +16,10 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
+    public int getCapacity() {
+        return capacity;
+    }
+
     public Ticket park(Car car) throws NotAvailableException {
         Ticket ticket = new Ticket();
         if (capacity > 0) {

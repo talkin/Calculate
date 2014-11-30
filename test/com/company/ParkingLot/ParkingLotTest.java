@@ -38,4 +38,11 @@ public class ParkingLotTest {
         parkingLot.getCar(new Ticket());
     }
 
+    @Test
+    public void should_add_an_available_lot_when_get_a_car() throws Exception {
+        ParkingLot parkingLot = new ParkingLot(1);
+        Ticket ticket = parkingLot.park(new Car());
+        parkingLot.getCar(ticket);
+        assertThat(parkingLot.getCapacity(), is(1));
+    }
 }
