@@ -1,0 +1,45 @@
+ParkingLot需求如下：
+
+1.ParkingLot出现
+停车:
+成功 出票
+失败 抛异常或者返回NULL
+取车:
+成功 返回车
+失败 抛异常或者返回NULL
+
+2.原有需求不变，ParkingBoy出现
+停车:
+可以管理多个停车场，ParkingBoy往第一个有空位的停车场停车，出票
+失败 抛异常或者返回NULL
+取车:
+成功 返回车
+失败 抛异常或者返回NULL
+
+3.原有需求不变, SmartParkingBoy出现
+停车:
+可以管理多个停车场, ParkingBoy往空车数量最多的停车场停车，出票
+失败 抛异常或者返回NULL
+取车:
+成功 返回车
+失败 抛异常或者返回NULL
+
+4.原有需求不变（可以重构），SuperParkingBoy出现
+停车:
+可以管理多个停车场, ParkingBoy往空车率最高的停车场停车，出票
+失败 抛异常或者返回NULL
+取车:
+成功 返回车
+失败 抛异常或者返回NULL
+
+5.原有需求不变，ParkingManager出现
+停车：
+可以管理多个ParkingBoy和ParkingLot，可以让手底下的ParkingBoy停车，也可以往ParkingLot停车
+失败 抛异常或者返回NULL
+取车：
+成功 返回车
+失败 抛异常或者返回NULL
+
+6.原有需求不变，ParkingManager的Report功能出现
+Manager列出ParkingBoy所管理的车和自己管理ParkingLot的车，并且Manager也可以管理Manager
+ParkingBoy列出所管理的ParkingLot中的车
