@@ -11,7 +11,7 @@ public class run {
 
         PromotionDiscount discount = new PromotionDiscount(0.7);
         PromotionSecondHalf secondHalf = new PromotionSecondHalf();
-        PromotionPriceOver priceUp100 = new PromotionPriceOver(100);
+        PromotionPriceOver priceUp100 = new PromotionPriceOver(100, 20);
 
         double totalPrice = itemBook.with(discount).with(secondHalf).with(priceUp100).doSum();
         System.out.println("book的总价 ：" + totalPrice);
