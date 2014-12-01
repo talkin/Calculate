@@ -18,13 +18,9 @@ public class ParkingBoy {
 
     public Ticket park(Car car) throws NotAvailableException {
         ParkingLot parkingLot = chooseParkingLot(parkingLots);
-        if (parkingLot.getCapacity() > 0) {
-            Ticket ticket = parkingLot.park(car);
-            ticketSource.put(ticket, parkingLot);
-            return ticket;
-        } else {
-            throw new NotAvailableException();
-        }
+        Ticket ticket = parkingLot.park(car);
+        ticketSource.put(ticket, parkingLot);
+        return ticket;
     }
 
     public ParkingLot chooseParkingLot(List<ParkingLot> parkingLots) throws NotAvailableException {
