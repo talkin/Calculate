@@ -10,21 +10,21 @@ import java.util.List;
 import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
-public class ParkingBoyTest {
+public class SimpleParkingBoyTest {
 
     List<ParkingLot> parkingLots = new ArrayList<ParkingLot>();
 
     @Test(expected = NotAvailableException.class)
     public void should_get_exception_when_all_parking_lot_is_not_available() throws Exception {
         parkingLots.add(new ParkingLot(0));
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new SimpleParkingBoy(parkingLots);
         parkingBoy.park(new Car());
     }
 
     @Test
     public void should_get_a_car_when_have_a_valid_ticket() throws Exception {
         parkingLots.add(new ParkingLot(1));
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new SimpleParkingBoy(parkingLots);
         Car car = new Car();
 
         Ticket ticket = parkingBoy.park(car);
@@ -40,7 +40,7 @@ public class ParkingBoyTest {
         ParkingLot p2 = new ParkingLot(2);
         parkingLots.add(p2);
 
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new SimpleParkingBoy(parkingLots);
         ParkingLot parkingLot = parkingBoy.chooseParkingLot(parkingLots);
 
         assertThat(parkingLot, is(p1));
@@ -49,7 +49,7 @@ public class ParkingBoyTest {
     @Test(expected = InvalidTicketException.class)
     public void should_get_exception_when_ticket_is_not_available() throws Exception {
         parkingLots.add(new ParkingLot(2));
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new SimpleParkingBoy(parkingLots);
         parkingBoy.getCar(new Ticket());
     }
 }

@@ -16,7 +16,7 @@ public class ParkingLot {
         this.capacity = capacity;
     }
 
-    public int getCapacity() {
+    public Integer getCapacity() {
         return capacity;
     }
 
