@@ -11,7 +11,7 @@ public class ProductTest {
 
     PromotionDiscount discount = new PromotionDiscount(0.7);
     PromotionSecondHalf secondHalf = new PromotionSecondHalf();
-    PromotionPriceOver priceOver = new PromotionPriceOver(100, 20);
+    PromotionTotalPrice priceOver = new PromotionTotalPrice(100, 20);
 
     @Test
     public void should_discount() throws Exception {

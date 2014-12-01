@@ -1,10 +1,10 @@
 package com.company.POS;
 
-public class PromotionPriceOver extends Promotion{
+public class PromotionTotalPrice extends Promotion{
     private double thresholdPrice;
     private double reducePrice;
 
-    public PromotionPriceOver(double thresholdPrice, double reducePrice) {
+    public PromotionTotalPrice(double thresholdPrice, double reducePrice) {
         this.thresholdPrice = thresholdPrice;
         this.reducePrice = reducePrice;
     }
