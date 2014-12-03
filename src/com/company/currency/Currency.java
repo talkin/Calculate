@@ -34,7 +34,7 @@ public abstract class Currency<T extends Currency> {
         }
     }
 
-    public static <R extends Currency> R caculate(List<Currency> List1, List<Currency> List2, Class<R> currencyClass) throws Exception {
+    public static <R extends Currency> R calculate(List<Currency> List1, List<Currency> List2, Class<R> currencyClass) throws Exception {
         R r1 = getSum(List1, currencyClass);
         R r2 = getSum(List2, currencyClass);
         r1.setValue(r1.getValue()-r2.getValue());

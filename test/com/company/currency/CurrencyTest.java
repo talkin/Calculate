@@ -1,6 +1,5 @@
 package com.company.currency;
 
-import com.company.currency.*;
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -29,21 +28,21 @@ public class CurrencyTest {
 
     @Test
     public void should_get_the_sum_of_currency_lists_as_dollar() throws Exception {
-        Dollar result = Currency.caculate(getCurrenciesOne(), getCurrenciesTwo(), Dollar.class);
+        Dollar result = Currency.calculate(getCurrenciesOne(), getCurrenciesTwo(), Dollar.class);
         assertThat(result.getClass().toString(), is(Dollar.class.toString()));
         assertThat(result.getValue(), is(1.0));
     }
 
     @Test
     public void should_get_the_sum_of_currency_lists_as_rmb() throws Exception {
-        RMB result = Currency.caculate(getCurrenciesOne(), getCurrenciesTwo(), RMB.class);
+        RMB result = Currency.calculate(getCurrenciesOne(), getCurrenciesTwo(), RMB.class);
         assertThat(result.getClass().toString(), is(RMB.class.toString()));
         assertThat(result.getValue(), is(6.0));
     }
 
     @Test
     public void should_get_the_sum_of_currency_lists_as_yen() throws Exception {
-        Yen result = Currency.caculate(getCurrenciesOne(), getCurrenciesTwo(), Yen.class);
+        Yen result = Currency.calculate(getCurrenciesOne(), getCurrenciesTwo(), Yen.class);
         assertThat(result.getClass().toString(), is(Yen.class.toString()));
         assertThat(result.getValue(), is(60.0));
     }
