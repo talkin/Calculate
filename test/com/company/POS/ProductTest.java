@@ -6,7 +6,7 @@ import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertThat;
 
 public class ProductTest {
-    Product book = new Product("book", 60);
+    Product book = new Product("Book", 60);
     Item item_book = new Item(book, 3);
 
     PromotionDiscount discount = new PromotionDiscount(0.7);
@@ -53,5 +53,11 @@ public class ProductTest {
     public void should_discount_and_secondHalf_and_priceOver() throws Exception {
         double actualPrice = item_book.with(discount).with(secondHalf).with(priceOver).doSum();
         assertThat(actualPrice, is(85.0));
+    }
+
+    @Test
+    public void should_get_shoppingCart_sum_price() throws Exception {
+        Item shoppingCart = new Item(new Product("shoppingCart", 260), 1);
+        assertThat(shoppingCart.with(priceOver).doSum(), is(240.0));
     }
 }
