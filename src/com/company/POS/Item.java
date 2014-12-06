@@ -41,7 +41,7 @@ public class Item {
     }
 
     public Item with(Promotion promotion) {
-        this.setPrice(promotion.changePrice(this));
+        this.setPrice(promotion.changePrice(price, num));
         return this;
     }
 

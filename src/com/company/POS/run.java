@@ -1,44 +1,41 @@
 package com.company.POS;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class run {
     public static void main(String[] args) {
-        Product book = new Product("Book", 60);
-        Product apple = new Product("Apple", 8);
 
-        Item itemBook = new Item(book, 3);
-        Item itemApple = new Item(apple, 10);
+        Discount discount = new Discount(0.7);
+        SecondHalf secondHalf = new SecondHalf();
+        OffWhenFull offWhenFull = new OffWhenFull(100, 20);
 
-        PromotionDiscount discount = new PromotionDiscount(0.7);
-        PromotionSecondHalf secondHalf = new PromotionSecondHalf();
-        PromotionTotalPrice totalPriceReduce = new PromotionTotalPrice(100, 20);
+        Product book = new Product("book", 20);
+        book.with(discount);
+        book.with(secondHalf);
+        book.with(offWhenFull);
 
-        double bookTotalPrice = itemBook.with(discount).with(secondHalf).with(totalPriceReduce).doSum();
-        double appleTotalPrice = itemApple.with(discount).doSum();
+        System.out.println("book的总价 ：" + book.buy(10));
 
-        System.out.println("book的总价 ：" + bookTotalPrice);
-        System.out.println("apple的总价 ：" + appleTotalPrice);
+        Product apple = new Product("apple", 5);
+        apple.with(discount);
+        System.out.println("apple的总价 ：" + apple.buy(8));
 
-        List<Item> itemList = new ArrayList<Item>();
-        itemList.add(itemBook);
-        itemList.add(itemApple);
+        Map<Product, Integer> shoppingCart = new HashMap<Product, Integer>();
+        shoppingCart.put(book, 10);
+        shoppingCart.put(apple, 8);
 
-        double sum = sum(itemList);
-        Item shoppingCart = new Item(new Product("shoppingCart", sum), 1);
-        double sumAfterPromotion = shoppingCart.with(totalPriceReduce).doSum();
-
-        System.out.println("购物车的总价 ：" + sum);
-        System.out.println("活动后总价 ：" + sumAfterPromotion);
+        System.out.println("购物车的总价 ：" + sum(shoppingCart));
     }
 
-    private static double sum(List<Item> itemList) {
-        double sum = 0;
-        for (Item item : itemList) {
-            sum += item.doSum();
+    private static double sum(Map<Product, Integer> shoppingCart) {
+        double price = 0;
+        for (Map.Entry<Product, Integer> entry : shoppingCart.entrySet()) {
+            Product product = entry.getKey();
+            Integer num = entry.getValue();
+            price += product.buy(num);
         }
-        return sum;
+        return price;
     }
 
 }
