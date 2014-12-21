@@ -1,16 +1,13 @@
 package com.company.Pattern.FactoryPattern;
 
-/**
- * Created by jtao on 12/18/14.
- */
 public class ShapeFactory {
-    public Shape getShape(String shapeType) {
+    public static Shape getShape(ShapeType shapeType) {
 
-        if (shapeType.equalsIgnoreCase("CIRCLE")) {
+        if (shapeType.equals(ShapeType.CIRCLE)) {
             return new Circle();
-        } else if (shapeType.equalsIgnoreCase("RECTANGLE")) {
+        } else if (shapeType.equals(ShapeType.RECTANGLE)) {
             return new Rectangle();
-        } else if (shapeType.equalsIgnoreCase("SQUARE")) {
+        } else if (shapeType.equals(ShapeType.SQUARE)) {
             return new Square();
         }
 

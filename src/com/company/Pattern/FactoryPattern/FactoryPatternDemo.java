@@ -1,20 +1,15 @@
 package com.company.Pattern.FactoryPattern;
 
-/**
- * Created by jtao on 12/18/14.
- */
 public class FactoryPatternDemo {
 
     public static void main(String[] args) {
-        ShapeFactory shapeFactory = new ShapeFactory();
-
-        Shape circle = shapeFactory.getShape("circle");
+        Shape circle = ShapeFactory.getShape(ShapeType.CIRCLE);
         circle.draw();
 
-        Shape rectangle = shapeFactory.getShape("rectangle");
+        Shape rectangle = ShapeFactory.getShape(ShapeType.RECTANGLE);
         rectangle.draw();
 
-        Shape square = shapeFactory.getShape("square");
+        Shape square = ShapeFactory.getShape(ShapeType.SQUARE);
         square.draw();
     }
 }
