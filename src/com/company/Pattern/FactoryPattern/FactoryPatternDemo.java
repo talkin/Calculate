@@ -3,13 +3,13 @@ package com.company.Pattern.FactoryPattern;
 public class FactoryPatternDemo {
 
     public static void main(String[] args) {
-        Shape circle = ShapeFactory.getShape(ShapeType.CIRCLE);
+        Shape circle = ShapeFactory.makeShape(ShapeType.CIRCLE);
         circle.draw();
 
-        Shape rectangle = ShapeFactory.getShape(ShapeType.RECTANGLE);
+        Shape rectangle = ShapeFactory.makeShape(ShapeType.RECTANGLE);
         rectangle.draw();
 
-        Shape square = ShapeFactory.getShape(ShapeType.SQUARE);
+        Shape square = ShapeFactory.makeShape(ShapeType.SQUARE);
         square.draw();
     }
 }

@@ -1,7 +1,7 @@
 package com.company.Pattern.FactoryPattern;
 
 public class ShapeFactory {
-    public static Shape getShape(ShapeType shapeType) {
+    public static Shape makeShape(ShapeType shapeType) {
 
         if (shapeType.equals(ShapeType.CIRCLE)) {
             return new Circle();
