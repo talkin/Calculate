@@ -9,6 +9,7 @@ import java.util.Map;
 
 public class ParkingLot {
     private int capacity;
+    private int availableLot;
 
     private Map<Ticket, Car> listMap= new HashMap<Ticket, Car>();
 
@@ -20,11 +21,19 @@ public class ParkingLot {
         return capacity;
     }
 
+    public int getAvailableLot() {
+        return availableLot;
+    }
+
+    public void setAvailableLot(int availableLot) {
+        this.availableLot = availableLot;
+    }
+
     public Ticket park(Car car) throws NotAvailableException {
         Ticket ticket = new Ticket();
-        if (capacity > 0) {
+        if (availableLot > 0) {
             listMap.put(ticket, car);
-            capacity -= 1;
+            availableLot -= 1;
             return ticket;
         } else {
             throw new NotAvailableException();

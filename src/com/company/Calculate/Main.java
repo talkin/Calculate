@@ -1,6 +1,6 @@
 package com.company.Calculate;
 
-import com.company.anyCase.Hello;
+import com.company.KeyCase.Hello;
 
 import java.util.Scanner;
 
